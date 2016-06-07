@@ -1,0 +1,20 @@
+IRTPPCPPDIR = ../inst/irtppcpp
+SPGODIR = ../inst/irtppcpp/include/SPGO/include
+IRTPPCPPLIB = -lirtppcpp
+
+PKG_LIBS = -L$(IRTPPCPPDIR) $(IRTPPCPPLIB) $(LIBM)
+PKG_CXXFLAGS= $(PKG_LIBS) -I$(IRTPPCPPDIR)/src -I$(SPGODIR) -I./
+
+
+CXXFLAGS = -O3 -Wall -Wno-unused -march=native
+CXX_STD = CXX11
+
+MAKE=make -j8
+
+all: irtpp $(SHLIB)
+
+irtpp:
+	(cd $(IRTPPCPPDIR) && $(MAKE) -f irtppcpp.mk)
+
+
+.PHONY: irtpp all

@@ -1,0 +1,175 @@
+---
+title: "Exploratory statistics with IRTpp"
+---
+
+Exploratory statistics
+=========================================
+In this section a set of functions that serve to a preliminary analysis of the test data are presented.
+
+- Cronbach's alpha
+- Cronbach-Mesbah Curve 
+- Biserial coefficient 
+- Test or Item information
+- Guttman's Lambda
+- Yule coefficient of correlation
+- Phi coefficient of correlation
+- Polyserial coefficient
+- Parallel Analysis
+
+###  Cronbach's alpha
+
+The Cronbach's alpha is a measure of correlation between test items.
+
+This calculated como $\frac{N}{N-1}(1 - \frac{\sum{S_i^2}}{S_t^2})$
+where $S_i^2$ is the variance of the item, $S_t^2$ is the variance total and $N$ is the number of items.
+  
+```{r}
+library(IRTpp)
+
+data <- simulateTest(model="2PL",items=10,individuals=1000)
+
+alpha.cronbach(data$test)
+```
+This function returns the value of coefficient.
+
+###  Cronbach-Mesbah Curve 
+
+To assess the unidimensionality of a set of items it is then possible to plot a curve, called Cronbach-Mesbah curve. 
+The first step uses all items to compute alpha. Then, at every step,  one item is removed. The removed item is that which leaves the scale with its  maximum alpha value. If we remove a bad item, the alpha  coefficient  will  increase,  whereas  if  we  remove  a  good item alpha must decrease. This procedure is repeated until only  two items remain. Thus, a decrease of such a curve after adding a items would  cause  us  to  suspect  strongly  that  the  added  items  did  not  constitute  a unidimensional set with the other items. 
+
+```{r}
+curve <- alpha.c(data$test)
+curve
+```
+
+This function returns a table with the number of items used to calculate the coefficient, the maximum value of the alpha coefficient calculated at each step and the item removed at each step. Finally it presents the Cronbach-Mesbah curve plot. 
+
+###  Biserial Coefficient
+
+Point-Biserial correlation coefficient is a correlation coefficient used when one variable is continuous and the other variable is dichotomous.
+
+It is calculated as $r_{xy} = (\bar{x}_p - \bar{x}_q / S_x)*\sqrt{pq}$ where p  is the proportion of subjects with one of the two possible values of the variable Y, q is the proportion of subjects with the other possible value, $\bar{x}_p$ and $\bar{x}_q$ is the average X subjects whose proportion is p and q respectively, and $S_x$ is the standard deviation of all subjects X.
+
+```{r}
+biserial.cor(rowSums(data$test), data$test[,1])
+
+```
+This function returns the value of Biserial coefficient.
+
+### Test or Item information
+
+The amount of information is computed as the area under the Item or Test Information Curve. 
+
+You need to have the values of the estimates of the parameters in matrix for calculation.
+
+```{r}
+fit <- irtpp(dataset = data$test,model = "2PL")
+
+fit=parameter.matrix(fit$z)
+
+information(fit, c(-2, 0))
+information(fit, c(0, 2), items = c(3, 5))
+
+```
+This function returns four values: the amount of information in the specified interval, the proportion of information in the specified interval, the value of range argument and the value of items argument.
+
+
+### Guttman's Lambda
+
+This function returns the six Lower limits of reliability coefficients Guttman for the test.
+
+Let $S_j^2$ the variances over persons of the n items in the test, and $S_t^2$ the variance over persons of the sum of the items.
+
+The firt estimate $\lambda_1$ can be computed from $L_1 = 1 - (\sum{s_j^2}/S_t^2)$
+Let $C_2$ the sum of squares of the covariances between items, therefore is the sum of $n(n-1)/2$ terms. The bound $\lambda_2$ is computed by $L_2 = L_1 + (\sqrt{n/n-1 C_2}/S_t^2)$.
+The third lower bound $\lambda_3$ is a modification of $\lambda_1$, it is computed from the $L_3 = n/(n-1) L_1$.
+Fourth lower bound $\lambda_4$ has been interpreted as the greatest split half reliability, and requires that the test be scored as twohalves. It is calculated from $L_4 = 2(1 - (s_a^2 + s_b^2)/s_t^2)$ where $S_a^2$ and $S_b^2$ are the respectives variances of the two parts for the single trial. 
+For the fifth lower bound $\lambda_5$, let $C_{2j}$ be the sum of the squares of the covariances of item j with the remaining n-1 items, and let $\bar{C}_2$ be the largest of the $C_{2j}$. Then the coefficient can be computed from $L_5 = L_1 + (2\sqrt{\bar{C}_2})/S_t^2$.
+The final bound is based on multiple correlation, let $e_j^2$ be the variance of the errors of estimate of item j from its linear multiple regression on the remaining n-1 items. Then $\lambda_6$ can be computed from $L_6 = 1 - (\sum{e_j^2})/S_t^2$ 
+
+```{r}
+gutt(data$test)
+```
+
+The result is a list with the six values of the coefficients.
+
+### Yule coefficient of correlation 
+
+The Yule coefficient of is a correlation coefficient applied to dichotomous data. Given a two x two table of counts
+
+| a | b | R1 |
+| c | d | R1 |
+|---|---|----|
+|C1 | C2| n  |
+
+or a vector $(a,b,c,d)$ of frequencies.
+
+The coefficient of Yule is calculated from $(ad - bc)/(ad + bc)$.
+This is the number of pairs in agreement $(ad)$ - the number in disagreement $(bc)$ over the total number of paired observations.
+
+```{r}
+x <- c(12,8,16,9)
+Yule(x)
+```
+
+This function returns the value of the Yule Q coefficient.
+
+### Phi coefficient of correlation
+The Phi coefficient is a correlation coefficient applied to dichotomous data. Given a two x two table of counts
+
+| a | b | R1 |
+| c | d | R1 |
+|---|---|----|
+|C1 | C2| n  |
+
+or a vector $(a,b,c,d)$ of frequencies.
+
+The coefficient phi is calculated from $(ad - bc)/\sqrt{p_qp_2q_1q_2}$ where $p_i$ and $q_i$ are the ratios of the dichotomous variables. 
+
+```{r}
+x2 = matrix(x,ncol=2)
+phi(x2)
+```
+
+This function returns the value of the Phi coefficient.
+
+### Polyserial coefficient
+
+Polyserial correlation coefficient is a correlation coefficient
+used when one variable is continuous and the other variable is dichotomous.
+
+The coefficient is calculated from $rho = r_{xy} * \sqrt{(n - 1)/n} * s_y/\sum{phi(tau)}$ where $r_{xy}$ is the coefficient of correlation of Pearson coefficient, $S_y$ is the standard deviation of Y, and $phi(tau)$ are the ordinates of the normal curve at the normal equivalent of the cut point boundaries between the item responses.
+
+```{r}
+x <- rnorm(100)
+y <- sample(1:5,100,replace=T)
+cor(x, y) 
+polyserial.cor(x, y) 
+```
+This function returns the value of the Polyserial coefficient.
+
+### Parallel Analysis
+
+This function performs Horn's parallel analysis for a principal component. 
+
+Is a implementation of Horn's (1965) tecnique for evaluating the components retained in a principle component analysis (PCA). This procedure is a adaptation of the function paran of Package Paran.
+
+It required a matrix or a Dataframe that holds the test response data, a number indicating the amount of iterations that representing the number of random data sets to be produced in the analysis which is introduced into the iterations parameter. Also required a number between 1 and 99 indicating the centile used in estimating bias which is introduced into the centile parameter, and a value specifies that the random number is to be seeded with the supplied integer.
+
+```{r}
+an.parallel(data$test, iterations = 100, centile = 99, seed = 12)
+
+```
+
+Additionally you can work with the correlation matrix, for this requires a parameter *mat* that specifies that the procedure use the provided correlation matrix rather than supplying a data matrix through x and the *n* argument must also be supplied when *mat* is used where *n* is the number of observations.
+
+
+```{r}
+data_cor <- cor(data$test)
+
+an.parallel(mat = data_cor, n = 1000, iterations = 100, centile = 99, seed = 12)
+
+```
+
+This function returns a table with the next information: *Retained Components* a scalar integer representing the number of components retained, *Adjusted eigenvalues* a vector of the estimated eigenvalues adjusted, *Unadjusted eigenvalues* a vector of the eigenvalues of the observed data from either an unrotated principal component analysis and *Bias* a vector of the estimated bias of the unadjusted eigenvalues. Finally, print the plot with the above information.
+

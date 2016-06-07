@@ -1,0 +1,256 @@
+---
+title: "Goodness of Fit-Dichotomous One Dimensional Model"
+author: "SICS Research Group"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Goodness of Fit-Dichotomous One Dimensional Model}
+  %\VignetteEngine{rmarkdown::render()}
+  %\VignetteEncoding{UTF-8}
+---
+
+Statistic of Maria Orlando and David Thissen  
+-
+**1. The statistic that calculates** *orlando_itemf( )* **is:**
+
+$S-X_j^2=\sum\limits_{k=1}^{p-1} N_k\dfrac{(O_{jk}-E_{jk})^2}{E_{jk}(1-E_{jk})}\sim {\chi^2}_{[(p-1)- (number\ \ of \ \ parameters \ \ considered)]}$
+
+Where:
+
+- The index $k$ concerns to the classic score $k=1,2,...,p-1$; $p$ is the number of items
+
+- The index $j$ concerns to the ítem $j$ ($j$ is fixed but arbitrary)
+
+- For the $3PL$ model, the number of parameters considered is 3, for the $2PL$ model, the number of parameters considered is 2, and for the $1PL$ model, the number of parameters considered is 1
+
+\
+**1.1 Elements of statistic**
+
+**1.1.1 expected frequencies** \
+
+$E_{jk}=\dfrac{\int T_jS_{k-1}^{*j}\Phi(\theta) \ \ \partial\theta}{\int S_{k}\Phi(\theta) \ \ \partial\theta}$
+
+Where:
+
+\
+( i ) The integral is approximated by methods of quadrature about equally spaced intervals, in the range of $\theta$ ($- 6\leq\theta\leq6$)
+
+( ii ) $S_{k-1}^{* j}$ is the accumulated likelihood score $k$ - 1 without considering the item $j$.
+ 
+( iii ) $S_k$ is the accumulated likelihood score $k$, considering all the items.
+
+( iv ) $T_j$ is the probability of responding correctly to the item $j$
+
+**1.1.1 observes frequencies**
+\
+
+$O_{jk}=\dfrac{N_{jk}}{N_k}$
+
+Where:
+
+\
+( i ) $N_k$ is the total of individuals with score $k$.
+
+( ii ) $N_{jk}$ is the total of individuals with score $k$.
+that answer correctly to the item $j$.
+
+
+\
+**2. The null hypothesis that is judged is:**
+
+$H_0$: The model adjusts to data
+
+\
+**3. Interpretation practice**
+
+$H_0$ is rejected if the p-value that returns *orlando_itemf( )* is less than $\alpha$, where $\alpha$ is the level of significance (generally, $\alpha=5\%$)
+
+Statistic of Fritz Drasgow, Michael V. Levine and Esther A. Williams, asessing the goodness of fit of individuals or of ítems
+-
+
+**1. The statistic that that calculates** *z3_itemf( )* **or** *z3_personf* **is:**
+
+
+$Z_3=\dfrac{l_0-E_3(\hat{\theta}_d)}{\sigma_3(\hat{\theta}_d)} \sim N(0,1)$
+
+**1.1 Elements of statistic**
+
+**1.1.1 Indice ($l_0$)** \
+
+$l_0=\sum\limits_{j=1}^{n}u_jlog[P_j(\hat{\theta}_d)]+(1-u_j)log[1-P_j(\hat{\theta}_d)]$
+
+Where:
+
+( i ) $n$ is the number total of the items.
+
+
+( ii ) $\hat{\theta}_d$ is the estimation maximum likelihood of laten trait, associated with the pattern of response $d$.
+
+
+( iii ) $P_j(.)$ is the likelihood of correctly answering at item j, dado un trazo y los parámetros del ítem $j$.given the parameters of the items and a laten traits
+
+( iv ) $l_0$ is the maximum of the logarithm of the likelihood of a reponse pattern $d$.
+
+**1.1.2 expected value conditional ($E_3$)** 
+
+$E_3(.)$ is the expected value conditional of the random variable:
+
+$X_3(t)=\sum\limits_{j=1}^{n}u_jlog[P_j(t)]+(1-u_j)log[1-P_j(t)]$ therefore.
+
+$E_3(t)=E(X_3(t)/\theta=t)=\sum\limits_{j=1}^{n}u_jlog[P_j(t)]+(1-u_j)log[1-P_j(t)]$
+
+**1.1.3 standard deviation conditional ($\sigma_3$)** 
+
+Similarly you have that:
+
+$\sigma_3^2(t)=VAR(X_3(t)/\theta=t)=\sum\limits_{j=1}^{n}P_j(t)(1-P_j(t))\left[\dfrac{P_j(t)}{1-P_j(t)}\right]^2$
+
+\
+**2. The null hypothesis that is judged is:**
+
+$H_0$: The model adjust to data
+
+\
+**3. Interpretation practice**
+
+$H_0$ is rejected if the observed value of the statistic that returns *z3_itemf* or *z3_personf* is less than -1.7, or greater than 1.7 (generally), the statistic is N(0,1) under $H_0$, then then the user can choose a different level of significance.
+
+Statistic of Steven P. Reise, to evaluate the fit of items
+-
+
+**1. The statistic that that calculates** *x2_itemf( )* **is:**
+
+$X^2=\sum\limits_{k=1}^{G} N_k\dfrac{(O_{ik}-E_{ik})^2}{E_{ik}(1-E_{ik})}\sim\chi^2_{[G-(\# \ \ param. \ \ considerados)]}$
+
+**1.1 Elements of statistic**
+
+**1.1.1 Numer of groups(G)** \
+
+The latent trait range is partitioned in $G$ groups, for example using percentiles.
+
+**1.1.2 expected frequencies($E_{ik}$)**
+
+Where:
+
+( i ) $E_{ik}$ It refers to the expected frequency of individuals in the Group $k$, that you respond correctly to the item $i$.
+
+( ii ) $E_{ik}$ It is a measure representative of the group, for example, the median or average.
+
+**1.1.3 observed frecuencies($O_{ik}$)**
+
+$O_{jk}=\dfrac{N_{jk}}{N_k}$
+
+Where:
+
+
+( i ) $N_k$ It is the total number of individuals belonging to the Group $k$.
+
+( ii ) $N_{jk}$ It is the total number of individuals in the Group $k$, that you respond correctly to the item $j$.
+
+\
+**2. The null hypothesis that is judged is:**
+
+$H_0:$ The item modeled adjust to data
+
+\
+**3. Interpretation practice**
+
+$H_0$ is rejected if the p-value simulated that returns *x2_itemf*  is less than $\alpha$, where $\alpha$ is the level of significance (generally, $\alpha=5\%$)
+
+
+Envelopes: David Thissen; Howard Wainer, to evaluate the fit of items
+-
+
+$\zeta_l=(a_l,b_l,c_l) \sim N(\hat{\zeta_l},I^{-1}(\hat{\zeta}_l))$ when $N\rightarrow\infty$,  $N$ the number of individuals who respond to the test; $I$ is the information matrix, and $l$ the item $l$
+
+
+**Algorithm :**
+
+- Generate a sequence over the domain of the latent trait $\theta$.
+
+- plot the item characteristic curve $l$.
+- Generate a sample of size $k$ of the distribution of $\zeta_l$: $(\zeta_{l1},...,\zeta_{lk})\sim N(\hat{\zeta_l},I^{-1}(\hat{\zeta_l}))$. 
+- For every $\zeta_{li}, i = 1, 2,..., k$ is calculated the probability that an individual with latent trait equal to a fixed point in the sequence generated in step 1, correctly answer the item $l$.
+
+- After obtaining the $k$ odds, setting a level of error, say 5\ %. Are graphed percentiles 25 and 75, this procedure is performed for each and every one of the points of the sequence generated at the beginning of the algorithm
+
+\
+**2. The null hypothesis that is judged is:**
+
+\
+$H_0$: the item modeled adjust to data
+
+\
+**3. Interpretation practice**
+
+\
+If bands do not contain completely the characteristic curve the item does not fit
+
+AIC, Akaike Information Criterion, to compare models
+-
+
+$AIC=-2L+2h$
+
+**1.1 Elements of statistic**
+
+\subsubsection{Log-likelihood(L)}
+
+**1.1.1 Marginal Log-likelihood (L)** \
+
+$L=p(u_{j.} /\zeta,\eta)=\int_\mathbb{R}log[p(u_{j.} /\theta,\zeta)]g(\theta/\eta)\partial \theta$ \ \ Que corresponde a la marginal de $(u_{j.},\theta)$ \\
+
+Where:
+
+- $u_{j.}$ It refers to the pattern of the individual's response $j$.
+
+- $p(u_{j.} /\theta,\zeta)=\prod\limits_{l=1}^{I}p(u_{jl} /\theta,\zeta)$, with $l=1,2,...,I$ the ítem $l$.
+
+- $g(\theta/\eta)\sim N(0,1)$ It is a priori for the distribution $\theta$.
+
+**1.1.2 Number of estimated parameters (h)** \
+
+- $h$, It is the total number of estimated parameters.
+
+**3. Interpretation practice**
+
+By its construction, the AIC is a measurement of mismatch between the model and the data,so lower values expected.
+
+BIC, Bayesian Information Criterion, to compare models
+-
+
+$BIC=-2L+h*logN$
+
+**1.1 Elements of statistic**
+
+\subsubsection{Log-likelihood(L)}
+
+**1.1.1 Marginal Log-likelihood (L)** \
+
+$L=p(u_{j.} /\zeta,\eta)=\int_\mathbb{R}log[p(u_{j.} /\theta,\zeta)]g(\theta/\eta)\partial \theta$ \ \ Corresponding to the marginal of $(u_{j.},\theta)$ \\
+
+Where:
+
+- $u_{j.}$ It refers to the pattern of the individual's response $j$
+
+- $p(u_{j.} /\theta,\zeta)=\prod\limits_{l=1}^{I}p(u_{jl} /\theta,\zeta)$, with $l=1,2,...,I$ the ítem $l$.
+
+- $g(\theta/\eta)\sim N(0,1)$ It is a priori for the distribution $\theta$.
+
+
+**1.1.2Number of estimated parameters (h)** \
+
+- $h$, It is the total number of estimated parameters.
+
+**1.1.3 Tamaño de la muestra (N)** \
+
+- $N$, Corresponds to the total number of respondents.
+
+
+**3. Interpretation practice**
+
+By its construction, the BIC is a measurement of mismatch between the model and the data,so lower values expected.
+
+
+
+
+
