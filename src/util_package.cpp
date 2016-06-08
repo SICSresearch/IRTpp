@@ -65,7 +65,7 @@ Rcpp::NumericVector getRVector(Matrix<double>* mat)
 //' @return list
 //' @export
 // [[Rcpp::export]]
-Rcpp::List uirtestimate(Rcpp::NumericMatrix data , int model_)
+Rcpp::List uirtestimate(Rcpp::NumericMatrix data , int model_,double convergenceEpsilon)
 {
   Matrix<double>*     args;
   Matrix<double>*     f;
@@ -81,7 +81,7 @@ Rcpp::List uirtestimate(Rcpp::NumericMatrix data , int model_)
 
   if(model_ == 1)
   {
-    irtpp::emestimation em(new irtpp::onepl(), d);
+    irtpp::emestimation em(new irtpp::onepl(), d,convergenceEpsilon);
     status_list   = em.estimate();
     args          = em.coef();
     f             = em.getF();
@@ -91,7 +91,7 @@ Rcpp::List uirtestimate(Rcpp::NumericMatrix data , int model_)
   }
   else if(model_ == 2)
   {
-    irtpp::emestimation em(new irtpp::twopl(), d);
+    irtpp::emestimation em(new irtpp::twopl(), d,convergenceEpsilon);
     status_list   = em.estimate();
     args          = em.coef();
     f             = em.getF();
@@ -101,7 +101,7 @@ Rcpp::List uirtestimate(Rcpp::NumericMatrix data , int model_)
   }
   else
   {
-    irtpp::emestimation em(new irtpp::threepl(), d);
+    irtpp::emestimation em(new irtpp::threepl(), d,convergenceEpsilon);
     status_list   = em.estimate();
     args          = em.coef();
     f             = em.getF();

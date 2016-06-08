@@ -7,8 +7,8 @@
 #' @param model_ -
 #' @return list
 #' @keywords internal
-uirtestimate <- function(data, model_) {
-    .Call('IRTpp_uirtestimate', PACKAGE = 'IRTpp', data, model_)
+uirtestimate <- function(data, model_,convergenceEpsilon) {
+    .Call('IRTpp_uirtestimate', PACKAGE = 'IRTpp', data, model_,convergenceEpsilon)
 }
 
 #######################################################################

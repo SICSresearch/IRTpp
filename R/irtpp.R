@@ -35,7 +35,8 @@ irtpp <- function(dataset          = NULL,
                   initialvalues    = NULL,
                   filename         = NULL,
                   output           = NULL,
-                  loglikflag       = F)
+                  loglikflag       = F,
+				  convergenceEpsilon = 0.001)
 {
   if(dims > 1) {
 	writeLines("Multidimensional analysis not yet implemented.\nPlease wait for the next release of the IRTpp package")
@@ -44,7 +45,7 @@ irtpp <- function(dataset          = NULL,
   {
 	dataset = data.matrix(dataset);
     mod = irtpp.model(model,asnumber=T);
-    ret = uirtestimate(dataset,mod)
+    ret = uirtestimate(dataset,mod,convergenceEpsilon)
 
     ret$z = ret$z[1:(mod*ncol(dataset))]
     
