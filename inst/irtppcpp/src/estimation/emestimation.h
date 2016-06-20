@@ -11,7 +11,6 @@
 #include <estimation/mstep.h>
 #include <type/ghquads.h>
 #include <utils/ramsay.h>
-#include <utils/Input.h>
 
 namespace irtpp
 {
@@ -190,7 +189,6 @@ private:
       int iterations;
       double LL;
 	  double sigmaConv;
-      Input input;
       Matrix<double>* f;
       Matrix<double>* r;
       Matrix<double>* z;

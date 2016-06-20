@@ -1,3 +1,5 @@
+include $(R_HOME)/etc/x86/Makeconf
+
 SRCS = src/type/ghquads.cpp \
 	src/utils/Input.cpp \
 	src/type/dataset.cpp \
@@ -18,10 +20,10 @@ all : clean lib$(LIBRARY).a clean
 $(OBJS): %.o : %.h
 
 $(SRC_DIR)/%.o: $(SRC_DIR)/%.cpp
-	g++ $(CPPFLAGS) -c $(INCLUDES) -o $@ $<
+	$(CC) $(CPPFLAGS) -c $(INCLUDES) -o $@ $<
 
 lib$(LIBRARY).a : $(OBJS)
-	ar rsv $@ $^
+	$(AR) rsv $@ $^
 
 clean:
 	rm -f libirtppcpp32.a

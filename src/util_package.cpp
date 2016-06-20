@@ -74,7 +74,6 @@ Rcpp::List uirtestimate(Rcpp::NumericMatrix data , int model_,double convergence
   double              loglikelihood;
   void**              status_list;
   irtpp::dataset*     d;
-  irtpp::model*       m;
 
   loglikelihood = 0;
   d = mat2dat(data);
@@ -163,7 +162,8 @@ Rcpp::List uirtestimate(Rcpp::NumericMatrix data , int model_,double convergence
   delete (bool*)status_list[1];
   delete[] status_list;
   delete[] returnpars;
-
+  delete d;
+  
   return result;
 }
 
