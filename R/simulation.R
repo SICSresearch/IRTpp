@@ -4,16 +4,19 @@
 #' @description Simulates a test according to a IRT Model.
 #' @details Check the documentation of \code{\link{simulateTestMD}} for information
 #' on the return in the Multidimensional case.
-#' @param model The IRT model. in Multidimensional is 3PL.
+#' @param model The IRT model. "1PL","2PL" or "3PL". In Multidimensional is "3PL".
 #' @param items The items to simulate in the test.
 #' @param latentTraits The latentTraits in the UIRT case.
 #' @param individuals The individuals to simulate in the test.
-#' @param boundaries The boundaries for parameter generation. See the \code{\link{simulateItemParameters}} documentation for help
+#' @param boundaries The boundaries for parameter generation. See the \code{\link{simulateItemParameters}} documentation for help.
 #' @param dims The dimensionality of the test.
 #' @param itempars A list with teh parameters of the items if provided.
 #' @param verbose Verbosibity for more information about the process, use when simulating long tests.
-#' @param threshold A boundary for the percent of answered questions to a test. i.e. 0.05 indicates the individuals will answer maximum the 95% of the questions and minimum the 5% of the questions. UIRT only.
-#' @returns List with model, seed, itempars, and the test simulated.
+#' @param seed Desired seed to use in test generation. If null, a seed based on the current time will be used.
+#' @param clusters Used for MD test generation.
+#' @param repetition Used for MD test generation.
+#' @param threshold A boundary for the percent of answered questions to a test. i.e. 0.05 indicates the individuals will answer maximum the 95\% of the questions and minimum the 5\% of the questions. UIRT only.
+#' @return List with model, seed, itempars, and the simulated test.
 #' @seealso
 #' \code{\link{simulateTest.file}}, \code{\link{simulateTestMD}}
 #' @examples 
@@ -63,7 +66,7 @@ simulateTest <- function(model = "3PL" , items = 10 , latentTraits=NULL ,individ
 }
 
 #######################################################################
-#' @name SimulateTest.file
+#' @name simulateTest.file
 #' @title This function simulates tests according to a IRT model.
 #' @description Simulates a test according to a model and saves it to files, can be slow due to disk usage.
 #' @param model A string with the model to simulate, please refer to the model documentation in irtpp documentation.
@@ -314,7 +317,6 @@ prob <- function(theta,a,d,c)
 #' @name testmulti
 #' @title Multidimensional test
 #' @description Simulates a multidimensional test.
-#' @usage testmulti(nitems,ninds,dim,model)
 #' @param nitems number of items.
 #' @param ninds number of individuals.
 #' @param dim latent trait dimension.
@@ -371,6 +373,7 @@ testmulti <- function(nitems,ninds,dim,model){
 #######################################################################
 #' @name simulateTestMD
 #' @title Simulate test Multidimensional
+#' @description Simlates a multidimensional test
 #' @param items The items to simulate
 #' @param individuals The individuals that answer the test.
 #' @param dims The dimensions of the test.

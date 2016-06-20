@@ -8,7 +8,7 @@
 #######################################################################
 #' @name parameters.initialize
 #' @title parameters.initialize
-#' @description 
+#' @description Function to initialize model parameters
 #' @param dataset The dataset to calculate the initial parameters. A matrix of 0's  and 1's
 #' @param dims To set the dimensions of use in the test.
 #' @param model The model with dimensions.

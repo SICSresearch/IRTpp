@@ -87,7 +87,8 @@ print.sentence<-function(...,sep=" ",verbose=T){
 #' # zita.m <- parameter.matrix(zita)
 #' # parameter list
 #' # zita.l <- parameter.list(zita)
-#'  @seealso
+#'
+#' @seealso
 #' \code{\link{parameter.list}}
 #' @export
 parameter.matrix<-function(pars, model="3PL", dims = 1 , byrow = F){
@@ -126,7 +127,7 @@ parameter.matrix<-function(pars, model="3PL", dims = 1 , byrow = F){
 #' # zita.m <- parameter.matrix(zita)
 #' # parameter list
 #' # zita.l <- parameter.list(zita)
-#'  @seealso
+#' @seealso
 #' \code{\link{parameter.matrix}}
 #' @export
 parameter.list<-function (pars, model = "3PL", dpar = NULL, cp = NULL)
@@ -624,7 +625,8 @@ llikm <- function(params,args){
   theta <- args[[1]];
   r <- args[[2]]
   f <- args[[3]]
-
+  item <- args[[4]]
+  
   eta <- theta*a+d
   p <- c+(1-c)*(1/(1+exp(-eta)))
 

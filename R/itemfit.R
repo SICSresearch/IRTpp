@@ -1,87 +1,4 @@
 #######################################################################
-#' @name x2_itemf
-#' @title X2 Statistic
-#' @description calculates the values of statistical X2 from Steven P. Reise.
-#' @usage x2_itemf(model,z,patterns,pval.sim,G,FUN,B=NULL)
-#' @param model	type of model ( "1PL", 2PL", "3PL" )
-#' @param z	list of estimations of the parameters of the items (discrimination, difficulty, guessing).
-#' @param patterns matrix of patterns response, the frequency of each pattern and the latent traits.
-#' @param pval.sim if TRUE simulates a p-value using bootstrap.
-#' @param G	number of groups.
-#' @param FUN function to calculate the frecuency expected in the each group (mean, median,..)
-#' @param B number of iterations bootstrap. If "NULL" B=100.
-#' @return X2 Statistic and p-value.
-#' @author SICS Research, National University of Colombia \email{ammontenegrod@@unal.edu.co}
-#' @export
-#'
-#' @seealso
-#' \code{\link{z3_personf}}, \code{\link{plotenvelope}}
-#'
-#' @references
-#'
-#' Steven P. Reise (1990). A Comparison of item-and person-fit Methods of Assesing Model-Data fit in IRT \emph{University of Minnesota}.
-#'
-#' @examples
-#'
-#' #Simulates a test and returns a list:
-#' test <- simulateTest()
-#'
-#' #the simulated data:
-#' datos <- test$test
-#'
-#' #model:
-#' mod <- irtpp(dataset = datos,model = "3PL")
-#'
-#' #latent trait:
-#' zz <- parameter.matrix(mod$z)
-#' p_mat <- mod$prob_mat
-#' traits <- individual.traits(model="3PL",method = "EAP",dataset = datos,itempars = zz,
-#' probability_matrix=p_mat)
-#'
-#' #X2-Statistic
-#' x2_itemf(model = "3PL",z = mod$z,patterns = traits,pval.sim = TRUE,G = 10,FUN = median,B=4)
-#'
-
-# <- function(model,z,patterns,pval.sim,G,FUN,B=NULL){
-
-#  check.model(model)
-#  if(is.null(B)){B=100}
-
-#  x2obs <- x2(model=model,z=z,patterns=patterns,G=G,FUN=FUN)
-
-#    if (pval.sim==F) {
-#      df <- G-irtpp.model(model,asnumber=T);
-#      pvals <- pchisq(x2obs, df = df, lower.tail = FALSE)
-#    }
-
-#  else {
-#    T.boot <- matrix(0, ncol(patterns[,-c(ncol(patterns)-1,ncol(patterns))]), B)
-#      for (b in 1:B) {
-#      X.new <- simulateTest(model = model,ncol(patterns)-2,individuals = sum(patterns[,ncol(patterns)-1]),itempars = z)
-#      X.new <- X.new$test
-      
-#      object.new <- irtpp(X.new,model = model)
-#      print("Iteration:")
-#      print(b)
-#      z <- parameter.matrix(object.new$z)
-#      z <- model.transform(z,model=model,"b","d")
-#      z  <- parameter.list(z,dpar = T)
-#      z_mat <- parameter.matrix(object.new$z)
-#      p_mat <- object.new$prob_mat
-#      pat.new <- individual.traits(model=model,z_mat,method="EAP",dataset = X.new,probability_matrix=p_mat)
-#      freqs <- cbind(pattern.freqs(X.new),pat.new$trait)
-      
-#      T.boot[, b] <- x2(model=model,z=z,patterns=freqs,G=G,FUN=FUN)
-#      }
-#    pvals <- (rowSums(T.boot >= rep(x2obs, B), na.rm = TRUE) +
-#                1)/(B + 1) 
-#  }
-
-#  return(cbind(x2obs,pvals))
-
-#}
-
-#######################################################################
 #' @name z3_personf
 #' @title Z3 Person fit statistic
 #' @description Calculates the values of statistical Z3 for individuals.
@@ -417,7 +334,7 @@ plotenvelope=function(item, numboot, alpha, model, data){
   nitems <- ncol(r) 
   x <- seq(from = -6,to = 6,by=0.1)
   y <- sapply(X = x,FUN = gg,a = params[item,1],d = params[item,2],cp = qlogis(params[item,3])) 
-  inf <- solve(-hessian(func=llikm,x=as.vector(params[item,]),args=list(theta,r,f)))
+  inf <- solve(-hessian(func=llikm,x=as.vector(params[item,]),args=list(theta,r,f,item)))
   media <- params[item,] 
   boot <- rmvnorm(numboot,mean = media,sigma = inf)
   boot[,3] <- ifelse(boot[,3] >= 1,1 - 1e-6,boot[,3])

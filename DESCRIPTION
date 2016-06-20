@@ -1,8 +1,8 @@
 Package: IRTpp
 Type: Package
 Title: Estimating IRT Parameters using the IRT Methodology
-Version: 0.2.0
-Date: 2016-05-5
+Version: 0.2.5
+Date: 2016-06-14
 Author: SICS Research Group
 Maintainer: Camilo Antonio Suarez Bolanos <caasuarezbo@unal.edu.co>
 Description: An implementation of the IRT paradigm for the scoring of different
@@ -12,13 +12,13 @@ Description: An implementation of the IRT paradigm for the scoring of different
     applications to those applications that require faster and more robust estimation
     procedures. See the IRTpp documentation and github site for more information and
     examples.
-License: GPL-3
+License: MIT + file LICENSE
 LinkingTo: Rcpp
 Imports: Rcpp (>= 0.11.0), mvtnorm, numDeriv, FactoMineR, MASS
 Suggests: knitr, optimx
 VignetteBuilder: knitr
-URL: http://github.com/SICSResearch/IRTpp
-BugReports: http://github.com/SICSResearch/IRTpp/issues
+URL: https://github.com/SICSResearch/IRTpp
+BugReports: https://github.com/SICSResearch/IRTpp/issues
 NeedsCompilation: no
 Packaged: 2016-05-05 23:44:27 UTC; Camilo
 RoxygenNote: 5.0.1

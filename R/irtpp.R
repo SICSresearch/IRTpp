@@ -9,6 +9,7 @@
 #' @param filename Optional argument specifying a CSV file to read instead of a dataset in memory.
 #' @param output Optional.  Additonal arguments that need. 
 #' @param loglikflag Optional. Show the loglikelihood at the end of estimation procedure. Also shows AIC and BIC statistic.
+#' @param convergenceEpsilon Optional. Convergence value, default value of 1E-4
 #' @return A list containing the estimates of the model parameters, 
 #' the number of iterations, the loglikelihood final, the final values
 #' of the estimation procedure EM.
@@ -16,17 +17,17 @@
 #' ## Simulation data for the model "1pl"
 #' # data <- simulateTest(model = "1PL", items = 10, individuals = 500)
 #' ## Estimation of the parameters
-#' # irtpp(data$test, model = "1PL")
+#' # irtpp(dataset = data$test, model = "1PL")
 #'
 #'## Simulation data for the model "2pl"
 #'# data <- simulateTest(model = "2PL", items = 20, individuals = 800)
 #'## Estimation of the parameters
-#'# irtpp(data$test, model = "2PL")
+#'# irtpp(dataset = data$test, model = "2PL")
 #'
 #'## Simulation data for the model "3pl"
 #'# data <- simulateTest(model = "3PL", items = 100, individuals = 1000)
 #'## Estimation of the parameters
-#'# irtpp(data$test, model = "3PL") 
+#'# irtpp(dataset = data$test, model = "3PL") 
 #'@export
 
 irtpp <- function(dataset          = NULL,
@@ -36,7 +37,7 @@ irtpp <- function(dataset          = NULL,
                   filename         = NULL,
                   output           = NULL,
                   loglikflag       = F,
-				  convergenceEpsilon = 0.001)
+				  convergenceEpsilon = 0.0001)
 {
   if(dims > 1) {
 	writeLines("Multidimensional analysis not yet implemented.\nPlease wait for the next release of the IRTpp package")

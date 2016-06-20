@@ -3,9 +3,8 @@
 #' @name alpha.cronbach
 #' @title Cronbach's alpha
 #' @description Cronbach's alpha measures how correlated are the items in a test
-#' @usage alpha.cronbach(test)
 #' @param test a matrix or a Dataframe that holds the test response data
-#' @details the coefficient is calculated $\alpha = (n/n-1)*(1 - (\sum V_i/V_t))$
+#' @details the coefficient is calculated \deqn{\alpha = (n/n-1)*(1 - (\sum V_i/V_t))}
 #' where $V_t$ is the variance of test scores and $V_i$ is the variance of item scores.
 #' It is desirable that the items are closely interrelated (coefficient near 1).
 #' This function was extracted from multilevel_2.5 package.
@@ -31,7 +30,6 @@ alpha.cronbach <- function (test)
 #' @name alpha.c
 #' @title Cronbach-Mesbah Curve
 #' @description To assess the unidimensionality of a set of items from alpha coefficient.
-#' @usage alpha.c(test)
 #' @param test a Dataframe that holds the test response data
 #' @details To construct the curve takes the next step by step:
 #' 1. The first step uses all items to compute alpha. 
@@ -103,17 +101,16 @@ alpha.c <- function (test) {
 #' @title Biserial Correlation
 #' @description Point-Biserial correlation coefficient is a correlation coefficient
 #' used when one variable is continuous and the other variable is dichotomous.
-#' @usage biserial.cor(x,y, use = c("all.obs", "complete.obs"), level = 1)
 #' @param x a numeric vector representing the continuous variable. 
 #' @param y a numeric vector representing the dichotomous variable.
 #' @param use Is a option for the use of missing values. 
 #' @param level which level of y to use.
 #' @details It is calculated by applying the Pearson correlation coefficient to the case
 #' where one of the variables has dichotomous nature. 
-#' It is calculated as $r_{xy} = (\bar{x}_p - \bar{x}_q / S_x)*\sqrt{pq}$ 
+#' It is calculated as \deqn{r_{xy} = (\bar{x}_p - \bar{x}_q / S_x)*\sqrt{pq}}
 #' where p  is the proportion of subjects with one of the two possible values of the 
 #' variable Y, q is the proportion of subjects with the other possible value, 
-#' $\bar{x}_p$ and $\bar{x}_q$ is the average X subjects whose proportion is p and q respectively,
+#' \deqn{\bar{x}_p} and \deqn{\bar{x}_q} is the average X subjects whose proportion is p and q respectively,
 #' and $S_x$ is the standard deviation of all subjects X.
 #' This function was adapted from ltm_1.0 package.
 #' @examples 
@@ -150,7 +147,6 @@ biserial.cor <- function (x, y, use = c("all.obs", "complete.obs"), level = 1)
 #' @name information 
 #' @title Test or Item information
 #' @description Computes the amount of test or item information. 
-#' @usage information(object, range, items = NULL)
 #' @param object a matrix  (con los coeficientes estimados)
 #' @param range a interval for which the test information should be computed.
 #' @param items the items for which the information shoulb be computed.
@@ -162,11 +158,12 @@ biserial.cor <- function (x, y, use = c("all.obs", "complete.obs"), level = 1)
 #' @return RangeProp the proportion of information in the specified interval.
 #' @return Range the value of range argument
 #' @return items the value of items argument
-#' @examples 
-#' fit <- irtpp(dataset = data$test,model = "2PL")
-#' fit <- parameter.matrix(fit$z)
-#' information(fit, c(-2, 0))
-#' information(fit, c(0, 2), items = c(3, 5))
+#' @examples
+#' #data <- simulateTest(model = "2PL", items = 20, individuals = 800) 
+#' #fit <- irtpp(dataset = data$test,model = "2PL")
+#' #fit <- parameter.matrix(fit$z)
+#' #information(fit, c(-2, 0))
+#' #information(fit, c(0, 2), items = c(3, 5))
 #' @references Reckase, M. (2009). Multidimensional item response theory. New York: Springer.
 #' @references Baker, F. B., & Kim, S. H. (Eds.). (2004). Item response theory: Parameter estimation techniques. CRC Press.
 #' @export
@@ -210,7 +207,6 @@ information <- function (object, range, items = NULL) {
 #' @name gutt
 #' @title Guttman's Lambda
 #' @description Six Lower limits of reliability coefficients are presented. 
-#' @usage gutt(test)
 #' @param test a matrix or a Dataframe that holds the test response data
 #' @details Let $S_j^2$ the variances over persons of the n items in the test, and
 #' $S_t^2$ the variance over persons of the sum of the items.
@@ -231,8 +227,8 @@ information <- function (object, range, items = NULL) {
 #' $lambda_6$ can be computed from $L_6 = 1 - (sum{e_j^2})/S_t^2$ 
 #' @return The six coefficients Guttman for the test.
 #' @examples 
-#' data <- simulateTest(model="2PL",items=10,individuals=1000)
-#' gutt(data$test) 
+#' #data <- simulateTest(model="2PL",items=10,individuals=1000)
+#' #gutt(data$test) 
 #' @references Guttman, L. (1945). A basis for analyzing test-retest reliability. Psychometrika, 10(4), 255-282.
 #' @export
 
@@ -317,7 +313,6 @@ gutt <- function(test){
 #' |---|---|----|
 #' |C1 | C2| n  |
 #' or a vector c(a,b,c,d) of frequencies.
-#' @usage Yule(x, Y = FALSE)
 #' @param x a 1 x 4 vector or a matrix 2 x 2 of frequencies.
 #' @param Y if Y is true return Yule's Y coefficient of colligation.
 #' @details The coefficient of Yule is calculated from (ad - bc)/(ad + bc).
@@ -325,8 +320,8 @@ gutt <- function(test){
 #' over the total number of paired observations. 
 #' @return the value of the Yule Q coefficient.
 #' @examples 
-#' x <- c(12,8,16,9)
-#' Yule(x)
+#' #x <- c(12,8,16,9)
+#' #Yule(x)
 #' @references Yule, G.U. (1912). On the methods of measuring the association between two attributes. Journal of the Royal Statistical Society, 75, 579-652.
 #' @references Warrens, Matthijs (2008), On Association Coefficients for 2x2 Tables and Properties That Do Not Depend on the Marginal Distributions. Psychometrika, 73, 777-789.
 #' @export
@@ -360,16 +355,13 @@ Yule <- function (x, Y = FALSE)
 #' |---|---|----|
 #' |C1 | C2| n  |
 #' or a vector c(a,b,c,d) of frequencies.
-#' @usage phi(x)
 #' @param x a 1 x 4 vector or a matrix 2 x 2 of frequencies.
-#' @details The coefficient phi is calculated from $(ad - bc)/\sqrt{p_qp_2q_1q_2}$ 
+#' @details The coefficient phi is calculated from \deqn{(ad - bc)/\sqrt{p_qp_2q_1q_2}}
 #' where $p_i$ and $q_i$ are the ratios of the dichotomous variables. 
 #' @return the value of the phi coefficient correlation.
-#' @examples 
-#' x <- c(12,8,16,9)
-#' phi(x)
-#' x2 <- matrix(x,ncol=2)
-#' phi(x2)
+#' @examples
+#' #x2 <- matrix(x,ncol=2)
+#' #phi(x2)
 #' @references Warrens, Matthijs (2008), On Association Coefficients for 2x2 Tables and Properties That Do Not Depend on the Marginal Distributions. Psychometrika, 73, 777-789.
 #' @references Yule, G.U. (1912). On the methods of measuring the association between two attributes. Journal of the Royal Statistical Society, 75, 579-652.
 #' @export
@@ -395,17 +387,16 @@ phi <- function (x)
 #' @title Polyserial correlation
 #' @description Polyserial correlation coefficient is a correlation coefficient
 #' used when one variable is continuous and the other variable is dichotomous.
-#' @usage polyserial.cor(x,y)
 #' @param x a numeric vector representing the continuous variable. 
 #' @param y a numeric vector representing the dichotomous variable.
-#' @details The coefficient is calculated from $\rho = r_{xy} * \sqrt{(n - 1)/n} * s_y/\sum{\phi(\tau)}$ 
+#' @details The coefficient is calculated from \deqn{\rho = r_{xy} * \sqrt{(n - 1)/n} * s_y/\sum{\phi(\tau)}}
 #' where $r_{xy}$ is the coefficient of correlation of Pearson coefficient, S_y is the 
-#' standard deviation of Y, and $\phi(\tau)$ are the ordinates of the normal curve at 
+#' standard deviation of Y, and \deqn{\phi(\tau)} are the ordinates of the normal curve at 
 #' the normal equivalent of the cut point boundaries between the item responses.
 #' This function was adapted from ltm_1.0 package.
 #' @examples
 #'  x <- rnorm(100)
-#'  y <- sample(1:5,100,replace=T)
+#'  y <- sample(1:5,100,replace=TRUE)
 #'  cor(x, y) 
 #'  polyserial.cor(x, y) 
 #' @return the value of the polyserial correlation.
@@ -442,8 +433,6 @@ polyserial.cor <- function (x, y)
 #' @name an.parallel
 #' @title Parallel Analysis
 #' @description performs Horn's parallel analysis for a principal component. 
-#' @usage an.parallel(x = NA, iterations = 0, centile = 0, 
-#'  seed = 0,mat = NA, n = NA)
 #' @param x a matrix or a Dataframe that holds the test response data
 #' @param iterations a number indicating the amount of iterations that 
 #' representing the number of random data sets to be produced in the analysis.

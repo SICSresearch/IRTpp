@@ -39,12 +39,12 @@ mapinterface <- function(zita_par, dat, e_model, matrix_flag, prob_matrix) {
 }
 
 #######################################################################
-#' @name eapinterface
-#'  @param zita_par 
-#'  @param dat 
-#'  @param e_model 
-#'  @param matrix_flag 
-#'  @param prob_matrix 
+#' eapinterface
+#'  @param zita_par  -
+#'  @param dat -
+#'  @param e_model -
+#'  @param matrix_flag -
+#'  @param prob_matrix -
 #' @return list
 #' @keywords internal
 eapinterface <- function(zita_par, dat, e_model, matrix_flag, prob_matrix) {

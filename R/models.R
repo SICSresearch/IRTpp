@@ -11,9 +11,9 @@
 #' \tabular{ll}{
 #'Package: \tab IRTpp\cr
 #'Type: \tab Package\cr
-#'Version: \tab 0.2\cr
-#'Date: \tab 2016-05-05\cr
-#'License: \tab MIT \cr
+#'Version: \tab 0.2.5\cr
+#'Date: \tab 2016-05-14\cr
+#'License: \tab MIT + file LICENSE \cr
 #'}
 #'@author SICS Research Team
 #'@keywords IRT MIRT Psychometry 
@@ -54,7 +54,7 @@ irtpp.p<- function(model){
 #######################################################################
 #'@name prob.3pl
 #'@title 3PL fast probability function
-#'@descrpition The probability function in the 3PL models.
+#'@description The probability function in the 3PL models.
 #'@param z List containing the item parameters a, d and c.
 #'@param theta a Vector that contains the latent traits of the individual.
 #' @seealso
@@ -64,7 +64,7 @@ irtpp.p<- function(model){
 #'## Simulate the test
 #'# data <- simulateTest(model = "3PL", items = 20, individuals = 200)
 #'## item parameters
-#'# zita <-data$itempars}
+#'# zita <-data$itempars
 #'# zita <- list(zita$a, zita$b, zita$c)
 #'## transformation of the parameter b
 #'# zita <- model.transform(zita, model = "3PL", src = "b", target = "d")
@@ -93,7 +93,7 @@ prob.3pl<- function(z, theta){
 #'## Simulate the test
 #'# data <- simulateTest(model = "2PL", items = 20, individuals = 200)
 #'## item parameters
-#'# zita <-data$itempars}
+#'# zita <-data$itempars
 #'# zita <- list(zita$a, zita$b, zita$c)
 #'## transformation of the parameter b
 #'# zita <- model.transform(zita, model = "3PL", src = "b", target = "d")
@@ -208,14 +208,14 @@ probability.2pl <- function(z,a=z$a,b=z$b,theta, d=-a*b)((1)/(1+exp(-a*(theta-b)
 #' \code{\link{probability.2pl}}, \code{\link{probability.3pl}}, 
 #' \code{\link{prob.3pl}}, \code{\link{prob.2pl}} 
 #'@examples 
-## Simulate the test
-# data <- simulateTest(model = "1PL", items = 20, individuals = 200)
-## item parameters
-# zita <-data$itempars
-## Latent traits
-# thetas <- data$latentTraits
-## Probability model
-# probability.1pl(zita, theta = thetas)
+#'## Simulate the test
+#'# data <- simulateTest(model = "1PL", items = 20, individuals = 200)
+#'## item parameters
+#'# zita <-data$itempars
+#'## Latent traits
+#'# thetas <- data$latentTraits
+#'## Probability model
+#'# probability.1pl(zita, theta = thetas)
 #'@export
 probability.1pl <- function(z,b=z$b,theta)((1)/(1+exp(-(theta-b))))
 
@@ -229,7 +229,7 @@ probability.1pl <- function(z,b=z$b,theta)((1)/(1+exp(-(theta-b))))
 #' Each key must contain a vector of the item parameters for each parameter
 #' @return The value of the loglikelihood.
 #' @seealso
-#' \code{\link{loglik.f}}}
+#' \code{\link{loglik.f}}
 #' @keywords internal
 loglik<-function (test, traits, z) 
 {
@@ -242,14 +242,14 @@ loglik<-function (test, traits, z)
 #######################################################################
 #'@name loglik.f
 #'@title LogLikelihood of a IRT model
-#'@decription LogLikelihood of a IRT model for UIRT (Fast version)
+#'@description LogLikelihood of a IRT model for UIRT (Fast version)
 #'@param test A data frame or a matrix with the responses of the test.
 #'@param traits A vector with each individual parameter.
 #'@param z A list with the parameters a, b and c specified by keys.
 #' Each key must contain a vector of the item parameters for each parameter.
 #'@return The value of the loglikelihood.
 #' @seealso
-#' \code{\link{loglik}}}
+#' \code{\link{loglik}}
 #' @keywords internal
 loglik.f <- function(test, traits, z){
   pm = lapply(traits, function(x) prob.3pl(z = z, theta = x));
