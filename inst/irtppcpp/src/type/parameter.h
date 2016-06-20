@@ -25,9 +25,11 @@ namespace irtpp
     Boundary_Function boundary;
     int               index;
     double      LL;
+	/*
 	~ll_parameter(){
 		delete r;
 		delete f;
+	}*/
   };
 
   // Definition of a probability function
@@ -46,12 +48,14 @@ namespace irtpp
     dataset*        d;
     double*         faux;
     int*            counter_temp;
+	/*
 	~e_parameter(){
 		delete f;
 		delete r;
 		delete weight;
 		delete probability;
 		delete d;
+	}*/
   };
 
   struct m_parameter
@@ -66,12 +70,14 @@ namespace irtpp
     int             items;
     int             param_size;
     double LL;
+	/*
 	~m_parameter(){
 		delete f;
 		delete r;
 		delete weight;
 		delete theta;
 		delete d;
+	}*/
   };
 
 }
