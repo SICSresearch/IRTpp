@@ -1,5 +1,12 @@
 ---
 title: "Exploratory statistics with IRTpp"
+author: "SICS Research Group"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Exploratory statistics with IRTpp}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 Exploratory statistics

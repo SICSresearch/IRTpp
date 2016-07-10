@@ -6,10 +6,10 @@ PKG_LIBS = -L$(IRTPPCPPDIR) $(IRTPPCPPLIB) $(LIBM)
 PKG_CXXFLAGS= $(PKG_LIBS) -I$(IRTPPCPPDIR)/src -I$(SPGODIR) -I./
 
 
-CXXFLAGS = -O3 -Wall -Wno-unused -march=native
+#CXXFLAGS = -O3 -Wall -Wno-unused -march=native
 CXX_STD = CXX11
 
-MAKE=make -j8
+MAKE=make
 
 all: irtpp $(SHLIB)
 

@@ -1,7 +1,7 @@
 Package: IRTpp
 Type: Package
 Title: Estimating IRT Parameters using the IRT Methodology
-Version: 0.2.5
+Version: 0.2.6
 Date: 2016-06-14
 Author: SICS Research Group
 Maintainer: Camilo Antonio Suarez Bolanos <caasuarezbo@unal.edu.co>

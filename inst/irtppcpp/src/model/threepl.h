@@ -11,18 +11,18 @@ namespace irtpp
     public:
       static void boundary(double* z)
       {
-        if(abs(z[0]) > 5)
+        if(std::abs(z[0]) > 5)
         {
           z[0] = 0.851;
         }
         if(z[0] < 0){
                 z[0] = 0.5;
         }
-        if(abs(-z[1]/z[0]) > 5)
+        if(std::abs(-z[1]/z[0]) > 5)
         {
           z[1] = 0;
         }
-        if(abs(z[2]) > 5)
+        if(std::abs(z[2]) > 5)
         {
           z[2] = -1.3;
         }

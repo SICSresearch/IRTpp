@@ -15,7 +15,7 @@ endif
 PKG_CXXFLAGS=  $(PKG_LIBS)
 #PKG_CPPFLAGS= -std=c++0x
 
-CXXFLAGS = -O3 -Wall -Wno-unused -march=native
+#CXXFLAGS = -O3 -Wall -Wno-unused -march=native
 #CXX_STD = CXX11
 
 MAKE=make

@@ -12,7 +12,7 @@ namespace irtpp
       
       static void boundary(double* z)
       {
-        if(abs(z[0]) > 10)
+        if(std::abs(z[0]) > 10)
 	{
           z[0] = 0;
         }

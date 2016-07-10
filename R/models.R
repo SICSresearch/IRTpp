@@ -11,7 +11,7 @@
 #' \tabular{ll}{
 #'Package: \tab IRTpp\cr
 #'Type: \tab Package\cr
-#'Version: \tab 0.2.5\cr
+#'Version: \tab 0.2.6\cr
 #'Date: \tab 2016-05-14\cr
 #'License: \tab MIT + file LICENSE \cr
 #'}

@@ -1,11 +1,12 @@
-CC = g++
+include $(R_HOME)/etc/Makeconf
+
 BFGS = bfgs.bin
 BRENT = brent.bin
 GENERIC = generic.bin
 
-CFLAGS   = -std=c++11 -O3 -Wall
+CFLAGS   = -O3 -Wall
 
-LINKER   = g++ -o
+LINKER   = $(CC) -o
 
 SRCDIR   = src
 INCDIR   = include
