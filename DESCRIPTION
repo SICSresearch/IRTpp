@@ -1,26 +1,11 @@
-Package: IRTpp
+Package: Unified
 Type: Package
-Title: Estimating IRT Parameters using the IRT Methodology
-Version: 0.2.6
-Date: 2016-06-14
-Author: SICS Research Group
-Maintainer: Camilo Antonio Suarez Bolanos <caasuarezbo@unal.edu.co>
-Description: An implementation of the IRT paradigm for the scoring of different
-    instruments measuring latent traits (a.k.a Abilities) and estimating item
-    parameters for a variety of models, this package is highly optimized using
-    Rcpp and carefully written R for the rest of the package, it aims to expand IRT
-    applications to those applications that require faster and more robust estimation
-    procedures. See the IRTpp documentation and github site for more information and
-    examples.
-License: MIT + file LICENSE
+Title: What the Package Does in One 'Title Case' Line
+Version: 1.0
+Date: 2016-07-10
+Author: Your Name
+Maintainer: Your Name <your@email.com>
+Description: One paragraph description of what the package does as one or more full sentences.
+License: GPL (>= 2)
+Imports: Rcpp (>= 0.12.5)
 LinkingTo: Rcpp
-Imports: Rcpp (>= 0.11.0), mvtnorm, numDeriv, FactoMineR, MASS
-Suggests: knitr, optimx
-VignetteBuilder: knitr
-URL: https://github.com/SICSResearch/IRTpp
-BugReports: https://github.com/SICSResearch/IRTpp/issues
-NeedsCompilation: no
-Packaged: 2016-05-05 23:44:27 UTC; Camilo
-RoxygenNote: 5.0.1
-Repository: CRAN
-Date/Publication: 2016-01-28 00:25:27

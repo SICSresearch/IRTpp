@@ -5,22 +5,43 @@
 
 using namespace Rcpp;
 
+// rcpp_hello_world
+List rcpp_hello_world();
+RcppExport SEXP Unified_rcpp_hello_world() {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    __result = Rcpp::wrap(rcpp_hello_world());
+    return __result;
+END_RCPP
+}
+// multiTest
+int multiTest(std::string path);
+RcppExport SEXP Unified_multiTest(SEXP pathSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::as<std::string> path(pathSEXP);
+    __result = Rcpp::wrap(multiTest(path));
+    return __result;
+END_RCPP
+}
 // uirtestimate
-Rcpp::List uirtestimate(Rcpp::NumericMatrix data, int model_,double convergenceEpsilon);
-RcppExport SEXP IRTpp_uirtestimate(SEXP dataSEXP, SEXP model_SEXP, SEXP convergenceEpsilon_SEXP) {
+Rcpp::List uirtestimate(Rcpp::NumericMatrix data, int model_, double convergenceEpsilon);
+RcppExport SEXP Unified_uirtestimate(SEXP dataSEXP, SEXP model_SEXP, SEXP convergenceEpsilonSEXP) {
 BEGIN_RCPP
     Rcpp::RObject __result;
     Rcpp::RNGScope __rngScope;
     Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type data(dataSEXP);
     Rcpp::traits::input_parameter< int >::type model_(model_SEXP);
-	Rcpp::traits::input_parameter< double >::type convergenceEpsilon(convergenceEpsilon_SEXP);
-    __result = Rcpp::wrap(uirtestimate(data, model_,convergenceEpsilon));
+    Rcpp::traits::input_parameter< double >::type convergenceEpsilon(convergenceEpsilonSEXP);
+    __result = Rcpp::wrap(uirtestimate(data, model_, convergenceEpsilon));
     return __result;
 END_RCPP
 }
 // abilityinterface
 Rcpp::List abilityinterface(Rcpp::NumericMatrix zita_par, Rcpp::NumericMatrix data, int model_, int method, bool matrix_flag, Rcpp::NumericVector prob_matrix);
-RcppExport SEXP IRTpp_abilityinterface(SEXP zita_parSEXP, SEXP dataSEXP, SEXP model_SEXP, SEXP methodSEXP, SEXP matrix_flagSEXP, SEXP prob_matrixSEXP) {
+RcppExport SEXP Unified_abilityinterface(SEXP zita_parSEXP, SEXP dataSEXP, SEXP model_SEXP, SEXP methodSEXP, SEXP matrix_flagSEXP, SEXP prob_matrixSEXP) {
 BEGIN_RCPP
     Rcpp::RObject __result;
     Rcpp::RNGScope __rngScope;
@@ -36,7 +57,7 @@ END_RCPP
 }
 // mapinterface
 Rcpp::List mapinterface(Rcpp::NumericMatrix zita_par, Rcpp::NumericMatrix dat, int e_model, bool matrix_flag, Rcpp::NumericVector prob_matrix);
-RcppExport SEXP IRTpp_mapinterface(SEXP zita_parSEXP, SEXP datSEXP, SEXP e_modelSEXP, SEXP matrix_flagSEXP, SEXP prob_matrixSEXP) {
+RcppExport SEXP Unified_mapinterface(SEXP zita_parSEXP, SEXP datSEXP, SEXP e_modelSEXP, SEXP matrix_flagSEXP, SEXP prob_matrixSEXP) {
 BEGIN_RCPP
     Rcpp::RObject __result;
     Rcpp::RNGScope __rngScope;
@@ -51,7 +72,7 @@ END_RCPP
 }
 // eapinterface
 Rcpp::List eapinterface(Rcpp::NumericMatrix zita_par, Rcpp::NumericMatrix dat, int e_model, bool matrix_flag, Rcpp::NumericVector prob_matrix);
-RcppExport SEXP IRTpp_eapinterface(SEXP zita_parSEXP, SEXP datSEXP, SEXP e_modelSEXP, SEXP matrix_flagSEXP, SEXP prob_matrixSEXP) {
+RcppExport SEXP Unified_eapinterface(SEXP zita_parSEXP, SEXP datSEXP, SEXP e_modelSEXP, SEXP matrix_flagSEXP, SEXP prob_matrixSEXP) {
 BEGIN_RCPP
     Rcpp::RObject __result;
     Rcpp::RNGScope __rngScope;
