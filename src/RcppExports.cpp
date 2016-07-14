@@ -15,14 +15,14 @@ BEGIN_RCPP
     return __result;
 END_RCPP
 }
-// multiTest
-int multiTest(std::string path);
-RcppExport SEXP Unified_multiTest(SEXP pathSEXP) {
+// multiTest_dico
+Rcpp::List multiTest_dico(Rcpp::IntegerMatrix RDataset);
+RcppExport SEXP Unified_multiTest_dico(SEXP RDatasetSEXP) {
 BEGIN_RCPP
     Rcpp::RObject __result;
     Rcpp::RNGScope __rngScope;
-    Rcpp::as<std::string> path(pathSEXP);
-    __result = Rcpp::wrap(multiTest(path));
+    Rcpp::traits::input_parameter< Rcpp::IntegerMatrix >::type RDataset(RDatasetSEXP);
+    __result = Rcpp::wrap(multiTest_dico(RDataset));
     return __result;
 END_RCPP
 }

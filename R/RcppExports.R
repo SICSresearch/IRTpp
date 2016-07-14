@@ -5,8 +5,8 @@ rcpp_hello_world <- function() {
     .Call('Unified_rcpp_hello_world', PACKAGE = 'Unified')
 }
 
-multiTest <- function(path) {
-    .Call('Unified_multiTest', PACKAGE = 'Unified', path)
+multiTest_dico <- function(RDataset) {
+    .Call('Unified_multiTest_dico', PACKAGE = 'Unified', RDataset)
 }
 
 #' uirtestimate

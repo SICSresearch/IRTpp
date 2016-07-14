@@ -13,7 +13,7 @@
 #include <cassert>
 
 //including optimization files from dlib library
-#include <dlib/optimization.h>
+#include "../../include/dlib/optimization.h"
 
 namespace irtpp {
 

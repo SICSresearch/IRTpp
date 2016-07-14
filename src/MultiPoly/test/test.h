@@ -9,7 +9,7 @@
 #define TEST_TEST_H_
 
 #include <vector>
-#include "../src/util/matrix.h"
+#include "../util/matrix.h"
 
 namespace irtpp {
 

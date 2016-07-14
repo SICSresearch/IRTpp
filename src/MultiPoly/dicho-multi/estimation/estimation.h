@@ -15,8 +15,8 @@
 #include <map>
 #include <cmath>
 
-#include "../estimation/estep.h"
-#include "../estimation/mstep.h"
+#include "estep.h"
+#include "mstep.h"
 #include "../model/model.h"
 #include "../type/estimationdata.h"
 
