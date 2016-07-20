@@ -2,11 +2,11 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 rcpp_hello_world <- function() {
-    .Call('Unified_rcpp_hello_world', PACKAGE = 'Unified')
+    .Call('IRTppExperimental_rcpp_hello_world', PACKAGE = 'IRTppExperimental')
 }
 
 multiTest_dico <- function(RDataset) {
-    .Call('Unified_multiTest_dico', PACKAGE = 'Unified', RDataset)
+    .Call('IRTppExperimental_multiTest_dico', PACKAGE = 'IRTppExperimental', RDataset)
 }
 
 #' uirtestimate
@@ -15,7 +15,7 @@ multiTest_dico <- function(RDataset) {
 #' @return list
 #' @export
 uirtestimate <- function(data, model_, convergenceEpsilon) {
-    .Call('Unified_uirtestimate', PACKAGE = 'Unified', data, model_, convergenceEpsilon)
+    .Call('IRTppExperimental_uirtestimate', PACKAGE = 'IRTppExperimental', data, model_, convergenceEpsilon)
 }
 
 #' abilityinterface
@@ -28,7 +28,7 @@ uirtestimate <- function(data, model_, convergenceEpsilon) {
 #' @return list
 #' @export
 abilityinterface <- function(zita_par, data, model_, method, matrix_flag, prob_matrix) {
-    .Call('Unified_abilityinterface', PACKAGE = 'Unified', zita_par, data, model_, method, matrix_flag, prob_matrix)
+    .Call('IRTppExperimental_abilityinterface', PACKAGE = 'IRTppExperimental', zita_par, data, model_, method, matrix_flag, prob_matrix)
 }
 
 #' mapinterface
@@ -40,7 +40,7 @@ abilityinterface <- function(zita_par, data, model_, method, matrix_flag, prob_m
 #' @return list
 #' @export
 mapinterface <- function(zita_par, dat, e_model, matrix_flag, prob_matrix) {
-    .Call('Unified_mapinterface', PACKAGE = 'Unified', zita_par, dat, e_model, matrix_flag, prob_matrix)
+    .Call('IRTppExperimental_mapinterface', PACKAGE = 'IRTppExperimental', zita_par, dat, e_model, matrix_flag, prob_matrix)
 }
 
 #' eapinterface
@@ -52,6 +52,6 @@ mapinterface <- function(zita_par, dat, e_model, matrix_flag, prob_matrix) {
 #' @return list
 #' @export
 eapinterface <- function(zita_par, dat, e_model, matrix_flag, prob_matrix) {
-    .Call('Unified_eapinterface', PACKAGE = 'Unified', zita_par, dat, e_model, matrix_flag, prob_matrix)
+    .Call('IRTppExperimental_eapinterface', PACKAGE = 'IRTppExperimental', zita_par, dat, e_model, matrix_flag, prob_matrix)
 }
 

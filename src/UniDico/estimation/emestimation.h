@@ -1,16 +1,16 @@
 #ifndef EMESTIMATION_H_
 #define EMESTIMATION_H_
 
-#include <model/onepl.h>
-#include <model/twopl.h>
-#include <model/threepl.h>
-#include <type/Matrix.h>
-#include <type/dataset.h>
-#include <type/parameter.h>
-#include <estimation/estep.h>
-#include <estimation/mstep.h>
-#include <type/ghquads.h>
-#include <utils/ramsay.h>
+#include "../model/onepl.h"
+#include "../model/twopl.h"
+#include "../model/threepl.h"
+#include "../type/Matrix.h"
+#include "../type/dataset.h"
+#include "../type/parameter.h"
+#include "../estimation/estep.h"
+#include "../estimation/mstep.h"
+#include "../type/ghquads.h"
+#include "../utils/ramsay.h"
 
 namespace irtpp
 {

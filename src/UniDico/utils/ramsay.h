@@ -1,7 +1,7 @@
 #ifndef RAMSAY_H_
 #define RAMSAY_H_
 
-#include <type/Matrix.h>
+#include "../type/Matrix.h"
 #include <iostream>
 
 using namespace std;

@@ -304,7 +304,7 @@ void estimation::EMAlgortihm() {
 		Estep(data);
 		dif = Mstep(data);
 		++iterations;
-		//std::cout << "Iteration: " << iterations << " \tMax-Change: " << dif << std::endl;
+		std::cout << "Iteration: " << iterations << " \tMax-Change: " << dif << std::endl;
 	} while ( dif > convergence_difference && iterations < MAX_ITERATIONS );
 }
 

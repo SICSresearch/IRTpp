@@ -1,7 +1,7 @@
 #ifndef TWOPL_H_
 #define TWOPL_H_
 
-#include <model/model.h>
+#include "model.h"
 
 namespace irtpp
 {

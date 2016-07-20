@@ -1,8 +1,8 @@
 #ifndef PARAM_H_
 #define PARAM_H_
 
-#include <type/Matrix.h>
-#include <type/dataset.h>
+#include "Matrix.h"
+#include "dataset.h"
 
 namespace irtpp
 {

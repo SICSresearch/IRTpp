@@ -1,7 +1,7 @@
 #ifndef THREEPL_H_
 #define THREEPL_H_
 
-#include <model/model.h>
+#include "model.h"
 
 namespace irtpp
 {

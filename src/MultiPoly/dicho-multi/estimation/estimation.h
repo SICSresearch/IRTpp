@@ -49,12 +49,12 @@ class estimation {
 		 * */
 		double convergence_difference;
 
+	public:
 		/**
-		 * Saves all data need in the estimation process
+		 * Saves all data needed in the estimation process
 		 * */
 		estimation_data data;
 
-	public:
 		/**
 		 * Receives:
 		 * 	1. A specific model to use -> [1, 3] that means 1PL, 2PL, or 3PL

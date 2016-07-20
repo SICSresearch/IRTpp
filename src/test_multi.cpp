@@ -1,22 +1,22 @@
 #include <Rcpp.h>
- using namespace irtpp;
+ using namespace Rcpp;
  using std::cout;
  
  #include <iostream>
  #include "MultiPoly/dicho-multi/estimation/estimation.h"
 
-void convert_matrix ( Rcpp::IntegerMatrix mat, matrix<char> &Y ) {
-    Y = matrix<char>(mat.nrow(), mat.ncol());
+void convert_matrix ( Rcpp::IntegerMatrix mat, irtpp::matrix<char> &Y ) {
+    Y = irtpp::matrix<char>(mat.nrow(), mat.ncol());
     for ( int i = 0; i < mat.nrow(); ++i )
         for ( int j = 0; j < mat.ncol(); ++j )
-            Y(i, j) = mat(i,j);
+            Y(i, j) = '0'+mat(i,j);
 }
 
 // [[Rcpp::export]]
 Rcpp::List multiTest_dico(Rcpp::IntegerMatrix RDataset){
-	matrix<char> Y;
-    convert_matrix(RDataset, 4, 10, Y);
-	dichomulti::estimation e(2, Y, 2, 0.001);
+  irtpp::matrix<char> Y;
+    convert_matrix(RDataset, Y);
+	irtpp::dichomulti::estimation e(2, Y, 2, 0.001);
     e.EMAlgortihm();
 	
 	Rcpp::NumericVector a(e.data.d);
@@ -34,7 +34,7 @@ Rcpp::List multiTest_dico(Rcpp::IntegerMatrix RDataset){
 	
 	Rcpp::List output(3);
 	output[0] = a;
-	output[1] = b;
+	output[1] = d;
 	output[2] = c;
 	return output;
 }

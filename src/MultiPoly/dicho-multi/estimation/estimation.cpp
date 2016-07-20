@@ -11,7 +11,7 @@ namespace irtpp {
 
 namespace dichomulti {
 
-estimation::estimation(int themodel, matrix<char> &dataset, short d,
+estimation::estimation(int themodel, irtpp::matrix<char> &dataset, short d,
 					   double convergence_difference) {
 	/**
 	 * Object to allocate all data needed in estimation process
@@ -217,7 +217,7 @@ void estimation::EMAlgortihm() {
 		Estep(data);
 		dif = Mstep(data);
 		++iterations;
-		//std::cout << "Iteration: " << iterations << " \tMax-Change: " << dif << std::endl;
+		std::cout << "Iteration: " << iterations << " \tMax-Change: " << dif << std::endl;
 	} while ( dif > convergence_difference && iterations < MAX_ITERATIONS );
 }
 

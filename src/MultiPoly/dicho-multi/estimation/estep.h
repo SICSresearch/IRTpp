@@ -14,8 +14,8 @@
 
 #include <iostream>
 
-#include "../../dicho-multi/model/model.h"
-#include "../../dicho-multi/type/estimationdata.h"
+#include "../model/model.h"
+#include "../type/estimationdata.h"
 
 namespace irtpp {
 

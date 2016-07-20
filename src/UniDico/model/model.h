@@ -1,13 +1,13 @@
 #ifndef MODEL_H_
 #define MODEL_H_
 
-#include <type/Matrix.h>
-#include <type/parameter.h>
+#include "../type/Matrix.h"
+#include "../type/parameter.h"
 #include <cmath>
 #include <vector>
-#include <utils/andrade.h>
-#include <utils/asa111.h>
-#include <type/ghquads.h>
+#include "../utils/andrade.h"
+#include "../utils/asa111.h"
+#include "../type/ghquads.h"
 
 namespace irtpp
 {

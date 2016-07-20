@@ -16,8 +16,8 @@
 #include <iostream>
 #include <ctype.h>
 #include <fstream>
-#include <type/dataset.h>
-#include <type/Matrix.h>
+#include "../type/dataset.h"
+#include "../type/Matrix.h"
 
 
 namespace irtpp{

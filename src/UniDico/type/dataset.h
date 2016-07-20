@@ -3,7 +3,7 @@
 
 #include <map>
 #include <vector>
-#include <type/Matrix.h>
+#include "Matrix.h"
 
 namespace irtpp
 {

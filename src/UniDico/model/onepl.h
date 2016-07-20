@@ -1,7 +1,7 @@
 #ifndef ONEPL_H_
 #define ONEPL_H_
 
-#include <model/model.h>
+#include "model.h"
 
 namespace irtpp
 {

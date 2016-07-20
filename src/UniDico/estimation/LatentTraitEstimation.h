@@ -6,18 +6,18 @@
 
 #ifndef LATENTTRAITESTIMATION_H_
 #define LATENTTRAITESTIMATION_H_
-#include <model/model.h>
-#include <model/onepl.h>
-#include <model/twopl.h>
-#include <model/threepl.h>
-#include <type/Matrix.h>
-#include <type/dataset.h>
-#include <type/parameter.h>
-#include <estimation/estep.h>
-#include <estimation/mstep.h>
-#include <type/ghquads.h>
-#include <type/LatentTraits.h>
-#include <Types/Generic.hpp>
+#include "../model/model.h"
+#include "../model/onepl.h"
+#include "../model/twopl.h"
+#include "../model/threepl.h"
+#include "../type/Matrix.h"
+#include "../type/dataset.h"
+#include "../type/parameter.h"
+#include "../estimation/estep.h"
+#include "../estimation/mstep.h"
+#include "../type/ghquads.h"
+#include "../type/LatentTraits.h"
+#include <SPGO/Types/Generic.hpp>
 #include <Optimization/Unrestricted/Singlevariable/Brent.hpp>
 #include <Optimization/Optim.hpp>
 

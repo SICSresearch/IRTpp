@@ -1,7 +1,7 @@
 #ifndef GENERIC_HPP
 #define GENERIC_HPP
 
-#include <Types/Any.hpp>
+#include "Any.hpp"
 
 namespace spgo
 {

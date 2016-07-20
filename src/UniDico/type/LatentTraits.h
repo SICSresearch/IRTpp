@@ -7,7 +7,7 @@
 
 #ifndef TYPE_LATENTTRAITS_H_
 #define TYPE_LATENTTRAITS_H_
-#include <type/dataset.h>
+#include "dataset.h"
 
 namespace irtpp
 {
